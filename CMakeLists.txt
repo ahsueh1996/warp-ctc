@@ -23,6 +23,9 @@ MESSAGE(STATUS "cuda found ${CUDA_FOUND}")
 option(WITH_GPU "compile warp-ctc with cuda." ${CUDA_FOUND})
 option(WITH_OMP "compile warp-ctc with openmp." ON)
 
+# ahsueh1996: add fix for THC tensor cast error
+set (CMAKE_CXX_FLAGS "-fpermissive")
+
 if(NOT WITH_OMP)
     add_definitions(-DCTC_DISABLE_OMP)
 endif()
