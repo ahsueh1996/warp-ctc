@@ -104,7 +104,8 @@ extern "C" int gpu_ctc(THCudaTensor *probs,
                        options, &gpu_size_bytes);
 
     //void* gpu_workspace = THCudaMalloc(state, gpu_size_bytes);
-    void* gpu_workspace = THCudaMalloc(state, &gpu_workspace, gpu_size_bytes);
+    void* gpu_workspace;
+    THCudaMalloc(state, &gpu_workspace, gpu_size_bytes);
 
     compute_ctc_loss(probs_ptr, grads_ptr,
                      labels_ptr, label_sizes_ptr,
