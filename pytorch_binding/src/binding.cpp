@@ -90,7 +90,7 @@ extern "C" int gpu_ctc(THCudaTensor *probs,
     float *costs_ptr = THFloatTensor_data(costs);
 
     //int probs_size = THFloatTensor_size(probs, 2);
-    int probs_size = THCudaTensor_size(probs, 2);
+    int probs_size = THCudaTensor_size(state, probs, 2);
 
     ctcOptions options;
     memset(&options, 0, sizeof(options));
